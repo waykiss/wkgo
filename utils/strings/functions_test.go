@@ -14,6 +14,7 @@ func TestWordCount(t *testing.T) {
 		{"", 0},
 		{"rodrigo rodrigues", 2},
 		{"rodrigo", 1},
+		{" ", 0},
 	}
 	for _, v := range testCases {
 		got := WordCount(v.value)
