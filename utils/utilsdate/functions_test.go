@@ -1,4 +1,4 @@
-package dateutils
+package utilsdate
 
 import (
 	"github.com/stretchr/testify/assert"
