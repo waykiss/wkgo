@@ -65,6 +65,7 @@ func TestMinInt(t *testing.T) {
 		{[]int{1, 2, 3, 10, 5, 3, 1000, 1001}, 1},
 		{[]int{5885, 0, 5885}, 0},
 		{[]int{10, 11, 9}, 9},
+		{[]int{-5, -6, 5, 0, 0, 8}, -5},
 	}
 	for _, v := range testCases {
 		got := Min(v.value...)
