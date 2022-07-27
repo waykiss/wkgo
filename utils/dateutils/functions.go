@@ -22,3 +22,12 @@ func FromString(date string) (r time.Time) {
 	}
 	return
 }
+
+//GetDaysBetweenDates return the diference of the of days between two dates object
+func GetDaysBetweenDates(startDate, endDate time.Time) int {
+	endDate = time.Date(endDate.Year(), endDate.Month(), endDate.Day(), 0, 0, 0, 0, time.Local)
+	startDate = time.Date(startDate.Year(), startDate.Month(), startDate.Day(), 0, 0, 0, 0, time.Local)
+	hoursDiff := endDate.Sub(startDate).Hours()
+	daysDiff := int(hoursDiff) / 24
+	return daysDiff
+}
