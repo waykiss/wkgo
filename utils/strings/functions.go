@@ -55,7 +55,14 @@ const (
 //RandString generate a random string
 //Use the constants RandStringCharsOnlyNumbers, RandStringCharsOnlyLetters and RandStringCharsLettersAndNumbers
 //to facilitate to pass the type of character you'd like to generate
-func RandString(n int, chars string) string {
+//limit the number of characters at 250
+func RandString(n int, chars string) (r string) {
+	if n <= 0 {
+		return
+	}
+	if n > 250 {
+		n = 250
+	}
 	result := make([]byte, n)
 	rand.Seed(time.Now().UnixNano())
 	for i := range result {
