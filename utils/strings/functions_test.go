@@ -241,3 +241,21 @@ func TestWordCount(t *testing.T) {
 		assert.Equal(t, v.expected, got, "", v.value, v.expected, got)
 	}
 }
+
+func TestOnlyNumbers(t *testing.T) {
+	testCases := []struct {
+		value    string
+		expected string
+	}{
+		{"123 test", "123"},
+		{"AAAAAAAbbb CCC  55587 54848 ddd4a45d4f75r1", "55587548484454751"},
+		{"", ""},
+		{" ", ""},
+		{"1", "1"},
+		{"0123456789", "0123456789"},
+	}
+	for _, v := range testCases {
+		got := OnlyNumbers(v.value)
+		assert.Equal(t, v.expected, got, "", v.value, v.expected, got)
+	}
+}
