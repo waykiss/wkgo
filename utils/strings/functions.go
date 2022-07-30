@@ -76,6 +76,17 @@ func RemoveExtraSpaces(v string) string {
 	return strings.Join(strings.Fields(v), " ")
 }
 
+// RemoveAccent remove all accents from given string
+func RemoveAccent(v string) string {
+	isMn := func(r rune) bool {
+		return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
+	}
+
+	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
+	result, _, _ := transform.String(t, v)
+	return result
+}
+
 // NoSpaceNoAccent remove all the spaces of the given string, begin, end and middle of the string
 func NoSpaceNoAccent(v string) string {
 	v = RemoveExtraSpaces(v)
@@ -103,17 +114,6 @@ func LowerNoSpaceNoAccent(v string) string {
 	v = strings.ToLower(v)
 	v = RemoveAccent(v)
 	return v
-}
-
-// RemoveAccent remove all accents from given string
-func RemoveAccent(v string) string {
-	isMn := func(r rune) bool {
-		return unicode.Is(unicode.Mn, r) // Mn: nonspacing marks
-	}
-
-	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
-	result, _, _ := transform.String(t, v)
-	return result
 }
 
 /* ReplaceSpecialCharacters substitui todos os caracteres especiais do primeiro parametro pelo valor informado no
