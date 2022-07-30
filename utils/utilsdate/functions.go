@@ -17,6 +17,7 @@ const (
 	DateFormatDatabase     = "2006-01-02"
 	DateTimeBr             = "02/01/2006 15:04:05"
 	DateBr                 = "02/01/2006"
+	Days                   = time.Hour * 24
 )
 
 func TimeStampToDateTimeString(timestamp *timestamp.Timestamp) string {
