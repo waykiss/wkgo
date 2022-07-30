@@ -25,6 +25,40 @@ func TestUpperNoSpaceNoAccent(t *testing.T) {
 	}
 }
 
+func TestNoSpace(t *testing.T) {
+	values := []struct {
+		input    string
+		expected string
+	}{
+		{" Hey Holla ÀáÀ  ê ã", "Hey Holla ÀáÀ ê ã"},
+		{" ", ""},
+		{"HELLO    123", "HELLO 123"},
+		{"a b C D e  F   G ", "a b C D e F G"},
+		{" a ", "a"},
+		{" TEST1 TESTE2  Test3 ", "TEST1 TESTE2 Test3"},
+	}
+	for _, v := range values {
+		got := RemoveExtraSpaces(v.input)
+		assert.Equal(t, v.expected, got, v.input, v.expected, got)
+	}
+}
+
+func TestNoAccent(t *testing.T) {
+	values := []struct {
+		input    string
+		expected string
+	}{
+		{" Hey Holla ÀáÀ  ê ã", " Hey Holla AaA  e a"},
+		{" ", " "},
+		{"âÂéÈÍíòÓúÚ  ", "aAeEIioOuU  "},
+		{"aaa bbb  CCCC  ", "aaa bbb  CCCC  "},
+	}
+	for _, v := range values {
+		got := RemoveAccent(v.input)
+		assert.Equal(t, v.expected, got, v.input, v.expected, got)
+	}
+}
+
 func TestReplaceSpecialCharacters(t *testing.T) {
 	values := []struct {
 		input      string
@@ -95,43 +129,45 @@ func TestToLowerCamelCase(t *testing.T) {
 	}
 }
 
-func TestRandString(t *testing.T) {
-	// testa o length
+func TestRandStringLength(t *testing.T) {
 	for i := 0; i < 10; i++ {
-		lenth := rand.Int()
+		lenth := rand.Intn(250)
 		v := RandString(lenth, RandStringCharsOnlyNumbers.String())
 		assert.Equal(t, lenth, len(v))
 	}
+}
 
-	// testa se os numeros nao sao repetidos sequencialmente
+func TestRandStringRepeatedNumbers(t *testing.T) {
 	var results []string
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 100; i++ {
 		value := ""
 		for j := 0; j < 4; j++ {
 			v := RandString(2, RandStringCharsOnlyNumbers.String())
 			value += v + "-"
-			//Necessario para que a funcao n tente gerar no mesmo nanosegundo, gerando assim o mesmo numero
+			//Necessary for the function n to try to generate in the same nanosecond, thus generating the same number
 			time.Sleep(time.Nanosecond * 1)
 		}
 		results = append(results, value)
 		for k := 0; k < len(results)-2; k++ {
-			assert.NotEqual(t, results[k], results[i], "Valor gerado nao deveria ser igual ao último gerado")
+			assert.NotEqual(t, results[k], results[i], "Value generated should not be equal to the last generated")
 		}
 	}
+}
 
-	// testa se as letras nao sao repetidas sequencialmente
-	results = []string{}
-	for i := 0; i < 1000; i++ {
+//TestRandStringRepeatedString test if the characters are repeteated sequencially
+func TestRandStringRepeatedString(t *testing.T) {
+	var results []string
+	for i := 0; i < 100; i++ {
 		value := ""
 		for j := 0; j < 4; j++ {
 			v := RandString(2, RandStringCharsOnlyLetters.String())
 			value += v + "-"
-			//Necessario para que a funcao n tente gerar no mesmo nanosegundo, gerando assim o mesmo numero
+			//Necessary for the function n to try to generate in the same nanosecond, thus generating the same number
 			time.Sleep(time.Nanosecond * 1)
 		}
 		results = append(results, value)
 		for k := 0; k < len(results)-2; k++ {
-			assert.NotEqual(t, results[k], results[i], "Valor gerado nao deveria ser igual ao último gerado")
+			assert.NotEqual(t, results[k], results[i], "Value generated should not be equal to the last generated")
 		}
 	}
 }
