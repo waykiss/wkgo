@@ -1,4 +1,4 @@
-package utilsdate
+package date
 
 import (
 	"fmt"

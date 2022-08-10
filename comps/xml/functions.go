@@ -1,4 +1,4 @@
-package utilsxml
+package xml
 
 import (
 	"bytes"

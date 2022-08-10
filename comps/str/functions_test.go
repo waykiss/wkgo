@@ -1,4 +1,4 @@
-package utilstrings
+package str
 
 import (
 	"github.com/stretchr/testify/assert"

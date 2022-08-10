@@ -1,11 +1,11 @@
-package utilshtml
+package html
 
 import (
 	"bytes"
 	"github.com/tdewolff/minify/v2"
 	"github.com/tdewolff/minify/v2/html"
 	"github.com/tdewolff/minify/v2/svg"
-	utilstrings "goapp/utils/strings"
+	"goapp/comps/str"
 	"regexp"
 	"strings"
 )
@@ -20,5 +20,5 @@ func MinifyHtml(v string) string {
 	if err != nil {
 		return "Erro ao minificar HTML"
 	}
-	return utilstrings.RemoveExtraSpaces(buf.String())
+	return str.RemoveExtraSpaces(buf.String())
 }

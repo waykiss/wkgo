@@ -1,4 +1,4 @@
-package utilstrings
+package str
 
 import (
 	"fmt"
@@ -458,4 +458,14 @@ func GetUriFromUrl(urlString string) string {
 func WordCount(v string) int {
 	words := strings.Fields(v)
 	return len(words)
+}
+
+//Contains verifica se alguma das strings passada contem no primeiro parametro
+func Contains(v string, strs ...string) bool {
+	for _, str := range strs {
+		if strings.Contains(v, str) {
+			return true
+		}
+	}
+	return false
 }

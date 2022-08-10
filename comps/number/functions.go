@@ -1,4 +1,4 @@
-package utilsnumber
+package number
 
 import (
 	"golang.org/x/exp/constraints"
