@@ -18,11 +18,13 @@ func Response(w http.ResponseWriter, resp interface{}, err error) {
 		w.Write([]byte(err.Error()))
 		return
 	}
-
-	jsonResp, jsonErr := json.Marshal(resp)
-	if jsonErr != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		return
+	if resp != nil {
+		jsonResp, jsonErr := json.Marshal(resp)
+		if jsonErr != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		w.Write(jsonResp)
 	}
-	w.Write(jsonResp)
+	w.Write([]byte("ok"))
 }

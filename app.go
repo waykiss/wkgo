@@ -18,6 +18,7 @@ type App interface {
 // Adapter struct that define the adapter interface at abstract way
 type Adapter interface {
 	Run()
+	GetApps() []App
 }
 
 // Start function that starts all the prymary adapters
@@ -26,6 +27,11 @@ func Start(appName string) {
 	ch := make(chan bool, 1)
 	defer func() {
 		log.Infof("Application '%s' has been started", applicationName)
+		for _, adapter := range adapters {
+			for _, app := range adapter.GetApps() {
+				app.AfterStart()
+			}
+		}
 		<-ch
 	}()
 	for _, adapter := range adapters {

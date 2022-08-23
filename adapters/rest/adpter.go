@@ -10,13 +10,14 @@ type AppInterface interface {
 	goapp.App
 	GetRouters() *[]Route
 	GetRouterGroup() *[]RouteGroup
-	GetMiddlewares() *[]http.Handler
+	GetMiddlewares() []func(http.Handler) http.Handler
 }
 
 // WebserverInterface interface that defines the adapter
 type WebserverInterface interface {
 	Run()
 	Add(app AppInterface)
+	GetApps() []goapp.App
 }
 
 type RouteGroup struct {

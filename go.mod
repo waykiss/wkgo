@@ -10,7 +10,6 @@ require (
 	github.com/gofiber/fiber/v2 v2.36.0
 	github.com/golang/protobuf v1.5.2
 	github.com/graphql-go/graphql v0.8.0
-	github.com/huandu/go-sqlbuilder v1.15.0
 	github.com/iancoleman/strcase v0.2.0
 	github.com/jackc/pgconn v1.13.0
 	github.com/lib/pq v1.10.6
@@ -22,6 +21,7 @@ require (
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e
 	golang.org/x/text v0.3.7
 	google.golang.org/grpc v1.48.0
+	gorm.io/driver/mysql v1.3.6
 	gorm.io/driver/postgres v1.3.9
 	gorm.io/gorm v1.23.8
 )
@@ -33,8 +33,8 @@ require (
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.10.0 // indirect
+	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/goccy/go-json v0.9.7 // indirect
-	github.com/huandu/xstrings v1.3.2 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
@@ -43,7 +43,7 @@ require (
 	github.com/jackc/pgtype v1.11.0 // indirect
 	github.com/jackc/pgx/v4 v4.16.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
-	github.com/jinzhu/now v1.1.4 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.15.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect

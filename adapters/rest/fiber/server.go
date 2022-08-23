@@ -25,7 +25,7 @@ var webserver *fiber.App
 const apiPrefix = "/api"
 
 func New(port string) rest.WebserverInterface {
-	return adapter{port: port}
+	return &adapter{port: port}
 }
 
 //Run method to start fiber webserver
@@ -40,14 +40,14 @@ func (f adapter) Run() {
 
 		apiGroup := webserver.Group(apiPrefix)
 		for _, app := range f.apps {
-			//appmid := app.GetMiddlewares()
-			//if appmid != nil {
-			//	for _, value := range *appmid {
-			//		if value.FiberHandler != nil {
-			//			apiGroup.Use(value.FiberHandler)
-			//		}
-			//	}
-			//}
+			appmid := app.GetMiddlewares()
+			if appmid != nil {
+				for _, value := range appmid {
+					if value != nil {
+						apiGroup.Use(adaptor.HTTPMiddleware(value))
+					}
+				}
+			}
 
 			restRouters := app.GetRouters()
 			if restRouters != nil {
@@ -64,7 +64,7 @@ func (f adapter) Run() {
 					log.Printf("Adding routes for group :%s", routeGroup.Prefix)
 					for _, route := range routeGroup.Routers {
 						fiberGroup.Add(route.Method, route.Path, adaptor.HTTPHandlerFunc(route.Handler))
-						log.Printf("Adding route : %s/%s", routeGroup.Prefix, route.Path)
+						log.Printf("Adding route : %s %s%s", route.Method, routeGroup.Prefix, route.Path)
 					}
 				}
 			}
@@ -81,7 +81,7 @@ func (f adapter) GetApps() (r []goapp.App) {
 	return
 }
 
-func (f adapter) Add(app rest.AppInterface) {
+func (f *adapter) Add(app rest.AppInterface) {
 	f.apps = append(f.apps, app)
 }
 
