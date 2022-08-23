@@ -82,7 +82,7 @@ func (v *Validation) Error() (err error) {
 		sb.WriteString(fmt.Sprintf("%s,", msg))
 	}
 	r := strings.TrimSuffix(sb.String(), ",")
-	return fmt.Errorf("%v: %s", time.Now(), r)
+	return fmt.Errorf("%s", r)
 }
 
 //GetErrors retorna os erros de validacao, após executar essa funcao, os erros são zerados
@@ -305,8 +305,7 @@ func (v *Validation) IsCnpjValid(fieldName, value string) bool {
 func (v *Validation) getMessage(messageId string) string {
 	switch lang := v.language; lang {
 	default:
-		//return messagesPtBR[messageId]
-		return ""
+		return messagesPtBR[messageId]
 	}
 }
 
