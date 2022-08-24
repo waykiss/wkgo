@@ -6,6 +6,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"strings"
 )
 
 type Database struct {
@@ -39,6 +40,9 @@ func NewConnection(host, port, user, password, dbName string) (r *Database, err 
 
 //getStringConnection retorna a string de conexao para o banco dado
 func getStringConnection(host, port, user, password, dbName string) string {
+	if strings.Contains(host, "/") {
+		return fmt.Sprintf("%s:%s@unix(%s)/%s?parseTime=true", user, password, host, dbName)
+	}
 	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, port, dbName)
 }
 
