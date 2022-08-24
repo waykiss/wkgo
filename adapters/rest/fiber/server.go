@@ -8,7 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"goapp"
-	"goapp/adapters/rest"
+	"github.com/rodrigorodriguescosta/goapp/adapters/rest"
 	"log"
 	"net/http"
 	"strings"

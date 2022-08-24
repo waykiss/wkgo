@@ -5,7 +5,7 @@ import (
 	"github.com/tdewolff/minify/v2"
 	"github.com/tdewolff/minify/v2/html"
 	"github.com/tdewolff/minify/v2/svg"
-	"goapp/comps/str"
+	"github.com/rodrigorodriguescosta/goapp/comps/str"
 	"regexp"
 	"strings"
 )
