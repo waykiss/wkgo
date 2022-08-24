@@ -1,7 +1,7 @@
 package grpc
 
 import (
-	"goapp"
+	"github.com/rodrigorodriguescosta/goapp"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"

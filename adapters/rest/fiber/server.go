@@ -7,7 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
-	"goapp"
+	"github.com/rodrigorodriguescosta/goapp"
 	"github.com/rodrigorodriguescosta/goapp/adapters/rest"
 	"log"
 	"net/http"

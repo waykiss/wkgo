@@ -1,7 +1,7 @@
 package rest
 
 import (
-	"goapp"
+	"github.com/rodrigorodriguescosta/goapp"
 	"net/http"
 )
 
