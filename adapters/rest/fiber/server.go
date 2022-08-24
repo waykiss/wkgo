@@ -70,7 +70,7 @@ func (f adapter) Run() {
 			}
 
 		}
-		webserver.Listen(":" + f.port)
+		log.Fatal(webserver.Listen(":" + f.port))
 	}
 }
 
