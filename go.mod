@@ -1,4 +1,4 @@
-module goapp
+module github.com/rodrigorodriguescosta/goapp
 
 go 1.18
 
