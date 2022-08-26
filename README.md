@@ -1,6 +1,6 @@
-GoApp is a Framework that implement Hexagonal Architecture organized by App (inspired by Django)
+WkGo is a Framework that implement Hexagonal Architecture organized by App (inspired by Django)
 
-GoApp is like a Django for Go that implement Hexagonal Architecture
+WkGo is like a Django for Go that implement Hexagonal Architecture
 
 Goals
 
