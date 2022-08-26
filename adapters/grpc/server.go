@@ -1,7 +1,7 @@
 package grpc
 
 import (
-	"github.com/rodrigorodriguescosta/goapp"
+	"github.com/waykiss/wkgo"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"
@@ -13,7 +13,7 @@ func New(port string) Adapter {
 }
 
 type appInterface interface {
-	goapp.App
+	wkgo.App
 	Register(grpcServer *grpc.Server)
 }
 
@@ -27,7 +27,7 @@ func (g *Adapter) Add(app appInterface) {
 	g.apps = append(g.apps, app)
 }
 
-// Run method that implements goapp.Adapter interface
+// Run method that implements wkgo.Adapter interface
 func (g Adapter) Run() {
 	var err error
 	listen, err := net.Listen("tcp", g.port)
@@ -45,7 +45,7 @@ func (g Adapter) Run() {
 	}
 }
 
-func (g Adapter) GetApps() (r []goapp.App) {
+func (g Adapter) GetApps() (r []wkgo.App) {
 	for _, app := range g.apps {
 		r = append(r, app)
 	}

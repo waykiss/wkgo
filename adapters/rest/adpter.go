@@ -1,13 +1,13 @@
 package rest
 
 import (
-	"github.com/rodrigorodriguescosta/goapp"
+	"github.com/waykiss/wkgo"
 	"net/http"
 )
 
 // AppInterface interface that define the interface of App for Rest adapter
 type AppInterface interface {
-	goapp.App
+	wkgo.App
 	GetRouters() *[]Route
 	GetRouterGroup() *[]RouteGroup
 	GetMiddlewares() []func(http.Handler) http.Handler
@@ -17,7 +17,7 @@ type AppInterface interface {
 type WebserverInterface interface {
 	Run()
 	Add(app AppInterface)
-	GetApps() []goapp.App
+	GetApps() []wkgo.App
 }
 
 type RouteGroup struct {

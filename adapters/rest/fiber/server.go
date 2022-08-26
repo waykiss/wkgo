@@ -7,8 +7,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
-	"github.com/rodrigorodriguescosta/goapp"
-	"github.com/rodrigorodriguescosta/goapp/adapters/rest"
+	"github.com/waykiss/wkgo"
+	"github.com/waykiss/wkgo/adapters/rest"
 	"log"
 	"net/http"
 	"strings"
@@ -74,7 +74,7 @@ func (f adapter) Run() {
 	}
 }
 
-func (f adapter) GetApps() (r []goapp.App) {
+func (f adapter) GetApps() (r []wkgo.App) {
 	for _, app := range f.apps {
 		r = append(r, app)
 	}

@@ -2,7 +2,7 @@ package gin
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/rodrigorodriguescosta/goapp/adapters/rest"
+	"github.com/waykiss/wkgo/adapters/rest"
 )
 
 type adapter struct {

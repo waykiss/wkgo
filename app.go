@@ -1,4 +1,4 @@
-package goapp
+package wkgo
 
 import (
 	log "github.com/sirupsen/logrus"
